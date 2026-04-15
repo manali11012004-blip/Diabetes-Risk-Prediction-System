@@ -4,15 +4,11 @@ import pandas as pd
 import joblib
 import matplotlib.pyplot as plt
 
-# =============================
-# LOAD MODEL
-# =============================
+
 model = joblib.load("diabetes_model.pkl")
 scaler = joblib.load("scaler.pkl")
 
-# =============================
-# RISK FUNCTION
-# =============================
+
 def risk_level(prob):
     if prob < 0.3:
         return "Low Risk"
@@ -21,17 +17,13 @@ def risk_level(prob):
     else:
         return "High Risk"
 
-# =============================
-# PAGE CONFIG
-# =============================
+
 st.set_page_config(page_title="Diabetes Predictor", page_icon="🩺")
 
 st.title("🩺 Diabetes Risk Prediction System")
 st.write("Enter patient details below:")
 
-# =============================
-# SIDEBAR GUIDE
-# =============================
+
 st.sidebar.title("ℹ️ How to Fill the Form")
 
 st.sidebar.write("""
@@ -57,9 +49,7 @@ st.sidebar.write("""
 - Your current age
 """)
 
-# =============================
-# BMI CALCULATOR
-# =============================
+
 st.sidebar.subheader("🧮 BMI Calculator")
 
 weight = st.sidebar.number_input("Weight (kg)", 30, 200, 70)
@@ -68,9 +58,7 @@ height = st.sidebar.number_input("Height (cm)", 100, 220, 170)
 bmi_calc = weight / ((height/100) ** 2)
 st.sidebar.write(f"Your BMI: {round(bmi_calc,2)}")
 
-# =============================
-# INPUT FORM
-# =============================
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -83,9 +71,7 @@ with col2:
     dpf = st.slider("Family Diabetes Risk", 0.1, 1.0, 0.5)
     age = st.number_input("Age", 1, 100, 30)
 
-# =============================
-# PREDICT BUTTON
-# =============================
+
 if st.button("Predict"):
 
     # Create dataframe
@@ -109,9 +95,7 @@ if st.button("Predict"):
     threshold = 0.4
     prediction = "Diabetic" if prob > threshold else "Not Diabetic"
 
-    # =============================
-    # RESULT
-    # =============================
+ 
     st.subheader("Result")
 
     if prediction == "Diabetic":
@@ -122,9 +106,7 @@ if st.button("Predict"):
     st.write(f"Probability: {round(prob, 2)}")
     st.write(f"Risk Level: {risk_level(prob)}")
 
-    # =============================
-    # XAI (Feature Importance)
-    # =============================
+
     st.subheader("🔍 Why this prediction?")
 
     try:
