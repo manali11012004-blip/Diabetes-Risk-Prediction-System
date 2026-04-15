@@ -49,7 +49,6 @@ This project implements a complete Machine Learning pipeline:
 
 - Models Used:
   - Random Forest
-  - XGBoost
 - Final Model:
   - Voting Classifier (Ensemble)
 
