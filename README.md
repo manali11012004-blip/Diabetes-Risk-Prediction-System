@@ -88,7 +88,7 @@ This project implements a complete Machine Learning pipeline:
 ## 🧪 Example Inputs & Expected Outputs
 
 ### 🟢 Low Risk Example
-      Pregnancies: 1
+Pregnancies: 1
 Glucose: 85
 Blood Pressure: 66
 BMI: 26.6
